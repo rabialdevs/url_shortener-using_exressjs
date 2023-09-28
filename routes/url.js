@@ -6,7 +6,7 @@ const {
   getAllUrls,
 } = require("../controllers/url");
 urlRoutes.post('/url',handelGenerateNewShortUrl);
-urlRoutes.get("/url/:shortId", getOriginalUrl);
+urlRoutes.get("/:shortId", getOriginalUrl);
 urlRoutes.get("/analytics/:shortId", getAnalyticsShortById);
 urlRoutes.get('/test', getAllUrls);
 

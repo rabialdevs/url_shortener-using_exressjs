@@ -8,7 +8,12 @@ router.get('/', async(req, res) => {
   res.render('home',{allUrls: allUrls});
 })
 
-
+router.get('/user', (req,res) => {
+  res.render('signup');
+})
+router.get('/login', (req, res) => {
+  res.render('login');
+})
 
 
 
