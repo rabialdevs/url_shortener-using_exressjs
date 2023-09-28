@@ -1,14 +1,14 @@
-const bodyParser = require("body-parser");
 const urlRoutes = require('express').Router(); 
 const {
   handelGenerateNewShortUrl,
   getOriginalUrl,
   getAnalyticsShortById,
+  getAllUrls,
 } = require("../controllers/url");
-urlRoutes.post('/url', bodyParser.json(), handelGenerateNewShortUrl);
-urlRoutes.get("/:shortId", getOriginalUrl);
+urlRoutes.post('/url',handelGenerateNewShortUrl);
+urlRoutes.get("/url/:shortId", getOriginalUrl);
 urlRoutes.get("/analytics/:shortId", getAnalyticsShortById);
-
+urlRoutes.get('/test', getAllUrls);
 
 
 

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+
+    body {
+      height: 100vh;
+      width: 100vh;
+      background-color: #f2f2f2;
+    }
+
+    div{
+      width:50%;
+      margin:auto;
+    }
+    h1,p {
+      text-align: center;
+    }
+    form{
+      text-align: center;
+      padding: 2rem;
+      margin: 2rem;
+    }
+    input[type=text]{
+      width: 20rem;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 2rem;
+      background-color: #f2f2f2;
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      font-style: italic;
+      font-variant: small-caps;
+      font-stretch: normal;
+      font-size-adjust: none;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      text-indent: 0px;
+      text-transform: none;
+      white-space: normal;
+      word-spacing: 0px;
+      word-wrap: normal;
+
+    }
+    button{
+      width: 10rem;
+      padding: 1rem;
+      margin: 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      outline: none;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      margin-top: 1rem;
+
+    }
+    label{
+      text-align: center;
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      font-style: italic;
+      font-variant: small-caps;
+      font-stretch: normal;
+      font-size-adjust: none;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      text-indent: 0px;
+      text-transform: none;
+      white-space: normal;
+      word-spacing: 0px;
+      word-wrap: normal;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>=
+  <h1>URL Shortner :-</h1>
+  <% if(locals.shortUrl){
+    %> <p>Generate :http://localhost:8000/url/<%= shortUrl%></p>
+    <%} %>
+  <form method="POST" action="/url">
+    <label>Enter Your Original Url</label>
+    <input type="text" name="url" placeholder="https://www.example.com">
+    <button type="submit">Generate</button>
+  </form>
+  <% if(locals.allUrls){ %>
+    <div>
+    <table>
+      <thead>
+        <th>S.No</th>
+        <th>ShortUrl</th>
+        <th>RedirectUrl</th>
+        <th>Clicks</th>
+        </thead>
+        <tbody>
+          <%allUrls.forEach((url,index) => {
+            %>
+            <tr>
+          <td><%= index+1%></td>
+          <td><%= url.shortUrl%></td>
+          <td><%= url.redirectUrl%></td>
+          <td><%= url.visitHistory.length%></td>
+          </tr>
+            <%
+          })%>
+          </tbody>
+      </table>
+
+  <% } %>
+        </div>
+
+</body>
+</html>
