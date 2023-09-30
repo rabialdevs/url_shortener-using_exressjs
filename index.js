@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.set(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views',path.resolve('./views'))
-app.use('/', urlRoute);
+app.use('/url', urlRoute);
 app.use('/', staticRoute);
 app.use('/user', userRouter);
 

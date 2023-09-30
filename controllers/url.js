@@ -10,6 +10,7 @@ async function handelGenerateNewShortUrl(req, res) {
       shortUrl: shortId,
       redirectUrl: body.url,
       visitHistory: [],
+      createdBy:req.user._id
     });
     return res.status(201).render("home", { shortUrl: shortId });
   }
@@ -28,7 +29,7 @@ async function getOriginalUrl(req, res) {
     }
   );
   // console.log(shortUrl);
-  console.log(entry);
+  // console.log(entry);
   if (entry.redirectUrl) {
      return res.redirect(entry.redirectUrl);
   } else {

@@ -30,7 +30,7 @@ async function handelsignIn(req, res) {
       })
     }
         const sessionId = uuidv4();
-        console.log(sessionId);
+        // console.log(sessionId);
         setUserId(sessionId, user);
         res.cookie("sessionId", sessionId);
     return res.redirect("/")
