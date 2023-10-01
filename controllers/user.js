@@ -29,11 +29,12 @@ async function handelsignIn(req, res) {
         error: 'Invalid email or password'
       })
     }
-        const sessionId = uuidv4();
-        // console.log(sessionId);
-        setUserId(sessionId, user);
-        res.cookie("sessionId", sessionId);
-    return res.redirect("/")
+        // const sessionId = uuidv4();
+        const token = setUserId(user);
+    // res.cookie("sessionId", sessionId);
+        res.cookie("sessionId",token);
+    
+    return res.redirect("/");
 
   } catch (error) {
     console.log(error);

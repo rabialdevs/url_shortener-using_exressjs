@@ -5,14 +5,18 @@ async function handelGenerateNewShortUrl(req, res) {
   const body = req.body;
   console.log(body.url);
   const shortId = shortid();
+  console.log();
   if (!body == "") {
     await Url.create({
       shortUrl: shortId,
       redirectUrl: body.url,
       visitHistory: [],
-      createdBy:req.user._id
+      createdBy: req.user._id,
     });
-    return res.status(201).render("home", { shortUrl: shortId });
+    const allUrls = await Url.find({ createdBy: req.user._id });
+    return res
+      .status(201)
+      .render("home", { shortUrl: shortId, allUrls: allUrls });
   }
   return res.status(401).json({ error: "url must not be empty" });
 }

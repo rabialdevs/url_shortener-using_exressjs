@@ -9,7 +9,7 @@ const connectDB = require('./config/db')
 const path = require('path')
 const cookieParser = require('cookie-parser');
 connectDB();
-const {restrictedLoginToUserOnly}=require('./middlewares/auth')
+const {restrictedLoginToUserOnly,cheakAuth}=require('./middlewares/auth')
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
@@ -20,8 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 // app.set(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views',path.resolve('./views'))
-app.use('/url', urlRoute);
-app.use('/', staticRoute);
+app.use('/url',restrictedLoginToUserOnly, urlRoute);
+app.use('/',cheakAuth, staticRoute);
 app.use('/user', userRouter);
 
 
